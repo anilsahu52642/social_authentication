@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}sign up{% endblock title %}</title>
+  <link rel="stylesheet" href="{% static 'css/mycode.css' %}">
+  <!-- for font awesome............. -->
+  <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+
+</head>
+
+<body>
+  {% block content1 %}
+  <div class="wrapper">
+    <div class="container">
+      <div class="col-left">
+        <div class="login-text">
+          <h2>Welcome Back</h2>
+          <p>Create your account.<br>It's totally free.</p>
+          <a class="btn" href="{% url 'signin_page' %}">Log in</a>
+
+        </div>
+      </div>
+      <div class="col-right">
+        <div class="login-form">
+          <h2>Sign up</h2>
+          <form action="{% url 'signup_page' %}" method="POST">
+            {% csrf_token %}
+            <p>
+              <label>Username<span>*</span></label>
+              <input type="text" placeholder="Username" name='username' required>
+            </p>
+            <p>
+              <label>Email address<span>*</span></label>
+              <input type="text" placeholder="Email" name='email' required>
+            </p>
+
+            <p>
+              <label>Password<span>*</span></label>
+              <input type="password" placeholder="Password" name='password' required>
+            </p>
+            <p>
+              <input type="submit" value="Sign Up" />
+            </p>
+            <p>
+              <a href="">Forget Password?</a>
+            </p>
+          </form>
+          <p style="color: red;">
+            {% if messages %}
+            {% for m in messages %}
+            {{m}}
+            {% endfor %}
+            {% endif %}
+            <span style="color:blue;">{{username}}</span>
+          </p>
+          <div class="social">
+            <a href="{% url 'social:begin' 'google-oauth2' %}" class="googleauth"><i class="fab fa-google"></i> Continue
+              with Google</a>
+            <a href="{% url 'social:begin' 'facebook' %}" class="facebookauth"><i class="fab fa-facebook"></i> Continue
+              with Facebook</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    {% endblock content1 %}
+
+    <script src="{% static 'js/mycode.js' %}"></script>
+    <!-- for font awesome............... -->
+    <script src="{% static 'js/all.min.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+{% block title %}profile page{% endblock title %}
+{% block content1 %}
+<div class="wrapper">
+    <div class="container">
+      <div class="col-left">
+        <div class="login-text">
+          <h2>Welcome Back</h2>
+          <p>Create your account.<br>It's totally free.</p>
+          <a class="btn" href="{% url 'logout_page' %}">Log Out</a>
+        </div>
+      </div>
+      <div class="col-right">
+        <div class="login-form">
+          <h2>Profile Page</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ad quaerat doloremque ratione quis cumque veritatis est! Aperiam incidunt repudiandae aliquam magnam libero. Fugit iusto numquam ipsum quia, quasi impedit eius aperiam necessitatibus hic amet, ad facilis a. Nemo, excepturi!</p>
+          
+        </div>
+      </div>
+    
+  </div>
+  {% endblock content1 %}
